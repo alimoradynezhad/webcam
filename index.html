@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webcam</title>
+    <style>
+        #my_camera{
+            width: 320px;
+            height: 240px;
+            border: 1px solid black;
+            margin-left: 500px;
+       }
+
+       #results{
+            width: 320px;
+            height: 240px;
+            border: 1px solid black;
+            margin-left: 500px;
+       }
+
+
+
+
+       #btn{
+           width: 320px;
+           height: 20px;
+           margin-top: 20px;
+           margin-bottom: 20px;
+           padding-top: 20px;
+           padding-bottom: 20px;
+           font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+           background-color: rgb(135, 168, 78);
+           color: white;
+           margin-left: 500px;
+           border:1px solid black;
+           border-radius: 4px;
+       }
+
+       </style>
+</head>
+<body>
+    <div id="my_camera"></div>
+<input id="btn" type=button value="برای گرفتن عکس کلیک کنید" onClick="take_snapshot()">
+ 
+<div id="results" ></div>
+ 
+
+
+    
+</body>
+<script type="text/javascript" src="webcamjs/webcam.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+
+
+<script language="JavaScript">
+    Webcam.set({
+        width: 320,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+    Webcam.attach( '#my_camera' );
+   
+
+   function take_snapshot() {
+    
+      
+      Webcam.snap( function(data_uri) {
+          
+          document.getElementById('results').innerHTML = 
+           '<img src="'+data_uri+'"/>';
+       } );
+   }
+   </script>
+
+</html>
